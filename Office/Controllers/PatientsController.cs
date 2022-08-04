@@ -23,7 +23,7 @@ namespace Office.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
+      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "DoctorName");
       return View();
     }
 
@@ -52,7 +52,7 @@ namespace Office.Controllers
     public ActionResult Edit(int id)
     {
       var thisPatient = _db.Patients.FirstOrDefault(patient => patient.PatientId == id);
-      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
+      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "DoctorName");
       return View(thisPatient);
     }
 
@@ -71,7 +71,7 @@ namespace Office.Controllers
     public ActionResult AddDoctor(int id)
     {
       var thisPatient = _db.Patients.FirstOrDefault(patient => patient.PatientId == id);
-      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
+      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "DoctorName");
       return View(thisPatient);
     }
 

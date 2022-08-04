@@ -8,7 +8,7 @@ using Office.Models;
 namespace ToDoList.Migrations
 {
     [DbContext(typeof(OfficeContext))]
-    [Migration("20220803160846_Initial")]
+    [Migration("20220804175508_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,6 +61,9 @@ namespace ToDoList.Migrations
                     b.Property<int>("PatientId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("BirthDate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("PatientName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

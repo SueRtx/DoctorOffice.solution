@@ -8,7 +8,10 @@
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.DoctorName)
-  @Html.TextBoxFor(model => model.DoctorName)
+  @Html.TextBoxFor(model => model.DoctorName, new { required = "required" })
+
+  @Html.LabelFor(model => model.Specialty)
+  @Html.TextBoxFor(model => model.Specialty, new { required = "required" })
   <input type="submit" value="Add new Doctor" />
 }
 <p>@Html.ActionLink("Show all Doctors", "Index")</p>

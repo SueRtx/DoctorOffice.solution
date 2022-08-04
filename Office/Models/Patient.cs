@@ -11,6 +11,7 @@ namespace Office.Models
 
         public int PatientId { get; set; }
         public string PatientName { get; set; }
+        public string BirthDate { get; set; }
 
         public virtual ICollection<DoctorPatient> JoinEntities { get;}
     }
