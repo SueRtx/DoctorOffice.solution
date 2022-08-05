@@ -9,7 +9,7 @@ using Office.Models;
 namespace ToDoList.Migrations
 {
     [DbContext(typeof(OfficeContext))]
-    [Migration("20220805171053_Initial")]
+    [Migration("20220805180648_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,7 +74,7 @@ namespace ToDoList.Migrations
                     b.Property<string>("PatientName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("SpecialtyId")
+                    b.Property<int>("SpecialtyId")
                         .HasColumnType("int");
 
                     b.HasKey("PatientId");
@@ -130,7 +130,9 @@ namespace ToDoList.Migrations
                 {
                     b.HasOne("Office.Models.Specialty", "Specialty")
                         .WithMany("Patients")
-                        .HasForeignKey("SpecialtyId");
+                        .HasForeignKey("SpecialtyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Specialty");
                 });

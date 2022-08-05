@@ -49,7 +49,7 @@ namespace ToDoList.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     PatientName = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     BirthDate = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    SpecialtyId = table.Column<int>(type: "int", nullable: true)
+                    SpecialtyId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,7 +59,7 @@ namespace ToDoList.Migrations
                         column: x => x.SpecialtyId,
                         principalTable: "Specialties",
                         principalColumn: "SpecialtyId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

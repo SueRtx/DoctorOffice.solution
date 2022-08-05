@@ -5,16 +5,16 @@
 @model Office.Models.Doctor
 
 <h2>Add Doctor</h2>
-
+<hr/>
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.DoctorName)
+  @Html.LabelFor(model => model.DoctorName) 
   @Html.TextBoxFor(model => model.DoctorName, new { required = "required" })
-
+<br>
   @Html.LabelFor(model => model.Specialty)
-  @Html.TextBoxFor(model => model.Specialty, new { required = "required" })
-
-  <input type="submit" value="Add new Doctor" />
+  @Html.DropDownList("SpecialtyId")
+<br>
+  <input type="submit" value="Add" />
 }
 <h5>@Html.ActionLink("Doctors List", "Index")</h5>
 <h5>@Html.ActionLink("Home", "Index", "Home")</h5>

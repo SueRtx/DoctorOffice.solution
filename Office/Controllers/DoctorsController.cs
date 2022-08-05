@@ -44,7 +44,8 @@ namespace Office.Controllers
         .ThenInclude(join => join.Patient)
         .FirstOrDefault(doctor => doctor.DoctorId == id);
       return View(thisDoctor);
-  }
+    }
+  
     public ActionResult Edit(int id)
     {
       var thisDoctor = _db.Doctors.FirstOrDefault(doctor => doctor.DoctorId == id);
