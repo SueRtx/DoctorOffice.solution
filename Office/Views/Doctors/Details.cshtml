@@ -10,20 +10,23 @@
 
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This Doctor does not contain any Patient</p>
+  <p>This Doctor Does Not Contain Any Patient</p>
 }
 else
 {
-  <h4>Patient the Doctor contains:</h4>
+  <h4>Doctor"s Patients:</h4>
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
+    @* <li>@join.Patient.PatientName</li> *@
     <li>@join.Patient.PatientName</li>
   }
   </ul>
 }
 
-<p>@Html.ActionLink("Back to Category", "Index")</p>
-<p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</p>
+<p>@Html.ActionLink("Add Patient", "Create", "Patients")</p>
+
+<p>@Html.ActionLink("Doctor List", "Index")</p>
+@* <p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</p> *@
 <p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId })</p>
  

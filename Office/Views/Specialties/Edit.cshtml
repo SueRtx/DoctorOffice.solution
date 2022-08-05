@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Office.Models.Specialty
+
+<h2>Edit Specialty</h2>
+
+<h4>Edit this Specialty: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.SpecialtyId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Specialty List", "Index")</p>
+
+@* <p>@Html.ActionLink("Back to Specialtys", "Index", null, null,  new {@class = "myCssClass"})</p> *@
+
+</div>

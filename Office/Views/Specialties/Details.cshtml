@@ -1,0 +1,50 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Office.Models.Specialty
+
+<h2>Specialty Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.Doctors.Count == 0)
+{
+  <h4>This Specialty does not contain any doctor</h4>
+  <h5>@Html.ActionLink("Add Doctor", "Create", "Doctors")</h5>
+}
+else
+{
+  <h4>Doctors in this Specialty</h4>
+  <ul>
+  @foreach(var doctor in Model.Doctors)
+  {
+    <li>@Html.ActionLink($"{doctor.DoctorName}", "Details", "Doctors", new { id = doctor.DoctorId })</li>
+    @* <li>@join.Patient.Name</li> *@
+  }
+  </ul>
+}
+<hr />
+@if (@Model.Patients.Count == 0)
+  {
+    <h4>This Specialty does not contain any Patient yet!</h4>
+
+    @* <h5>@Html.ActionLink("Patient List", "Create", "Patients")</h5>  *@
+  }
+  else
+  {
+    <h4>Patients in this specialty</h4>
+    <ul>
+      @foreach (var patient in Model.Patients)
+      {
+      <li>@Html.ActionLink($"{patient.PatientName}", "Details", "Patients", new { id = patient.PatientId })</li>
+      }
+    </ul>
+  }
+  <hr />
+@* <h5>@Html.ActionLink("Doctor List", "Index", "Doctors")</h5>  *@
+
+<h5>@Html.ActionLink("Edit Specialty", "Edit", new { id = Model.SpecialtyId })</h5>
+
+<h5>@Html.ActionLink("Delete Specialty", "Delete", new { id = Model.SpecialtyId })</h5>
+ 

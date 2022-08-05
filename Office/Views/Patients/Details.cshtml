@@ -7,6 +7,7 @@
 <h2>Patient Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.PatientName): @Html.DisplayFor(model => model.PatientName)</h3>
+<h3>@Html.DisplayNameFor(model => model.BirthDate): @Html.DisplayFor(model => model.BirthDate)</h3>
 
 @if(@Model.JoinEntities.Count == 0)
 {
@@ -14,14 +15,16 @@
 }
 else
 {
-  <h4>Doctors the Patient belongs to:</h4>
+  <h4>Doctor's Patients</h4>
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
     <li>@join.Doctor.DoctorName</li>
+
     @using (Html.BeginForm("DeleteDoctor", "Patients"))
     {
       @Html.Hidden("joinId", @join.DoctorPatientId)
+
       <input type="submit" value="Delete"/>
     }
   }
@@ -29,7 +32,7 @@ else
 }
 
 <p>@Html.ActionLink("Add a Doctor", "AddDoctor", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Patient list", "Index")</p>
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
 <p>@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId })</p>
 <p>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</p>

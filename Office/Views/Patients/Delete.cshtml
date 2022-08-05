@@ -7,8 +7,10 @@
 <h2>Are you sure you want to delete this Patient?</h2>
 
 @Html.DisplayNameFor(model => model.PatientName): @Html.DisplayFor(model => model.PatientName)
+
 @using (Html.BeginForm())
 {
-    <input type="submit" value="Delete" />
+  <input type="submit" value="Delete" />
 }
-@Html.ActionLink("Back to List", "Index")
+
+@Html.ActionLink("Patient List", "Index")

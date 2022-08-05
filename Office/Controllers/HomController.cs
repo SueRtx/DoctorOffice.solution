@@ -10,6 +10,5 @@ namespace Office.Controllers
     {
       return View();
     }
-
-    }
+  }
 }

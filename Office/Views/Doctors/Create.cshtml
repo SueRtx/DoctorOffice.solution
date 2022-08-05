@@ -4,7 +4,8 @@
 
 @model Office.Models.Doctor
 
-<h4>Add Doctor</h4>
+<h2>Add Doctor</h2>
+
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.DoctorName)
@@ -12,7 +13,8 @@
 
   @Html.LabelFor(model => model.Specialty)
   @Html.TextBoxFor(model => model.Specialty, new { required = "required" })
+
   <input type="submit" value="Add new Doctor" />
 }
-<p>@Html.ActionLink("Show all Doctors", "Index")</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<h5>@Html.ActionLink("Doctors List", "Index")</h5>
+<h5>@Html.ActionLink("Home", "Index", "Home")</h5>

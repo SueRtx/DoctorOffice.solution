@@ -3,10 +3,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ToDoList.Migrations
 {
-    public partial class Initia : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Specialties",
+                columns: table => new
+                {
+                    SpecialtyId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Specialties", x => x.SpecialtyId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Doctors",
                 columns: table => new
@@ -14,11 +27,18 @@ namespace ToDoList.Migrations
                     DoctorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DoctorName = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Specialty = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                    SpecialtyId = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    SpecialtyId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Doctors", x => x.DoctorId);
+                    table.ForeignKey(
+                        name: "FK_Doctors_Specialties_SpecialtyId1",
+                        column: x => x.SpecialtyId1,
+                        principalTable: "Specialties",
+                        principalColumn: "SpecialtyId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -27,11 +47,19 @@ namespace ToDoList.Migrations
                 {
                     PatientId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PatientName = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                    PatientName = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    BirthDate = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    SpecialtyId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Patients", x => x.PatientId);
+                    table.ForeignKey(
+                        name: "FK_Patients_Specialties_SpecialtyId",
+                        column: x => x.SpecialtyId,
+                        principalTable: "Specialties",
+                        principalColumn: "SpecialtyId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,6 +97,16 @@ namespace ToDoList.Migrations
                 name: "IX_DoctorPatient_PatientId",
                 table: "DoctorPatient",
                 column: "PatientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Doctors_SpecialtyId1",
+                table: "Doctors",
+                column: "SpecialtyId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Patients_SpecialtyId",
+                table: "Patients",
+                column: "SpecialtyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -81,6 +119,9 @@ namespace ToDoList.Migrations
 
             migrationBuilder.DropTable(
                 name: "Patients");
+
+            migrationBuilder.DropTable(
+                name: "Specialties");
         }
     }
 }

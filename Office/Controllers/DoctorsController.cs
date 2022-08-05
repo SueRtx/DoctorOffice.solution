@@ -19,11 +19,13 @@ namespace Office.Controllers
     public ActionResult Index()
     {
       List<Doctor> model = _db.Doctors.ToList();
+      ViewBag.SpecialtyNum = _db.Specialties.ToList().Count();
       return View(model);
     }
 
     public ActionResult Create()
     {
+      ViewBag.SpecialtyId = new SelectList(_db.Specialties, "SpecialtyId", "Name");
       return View();
     }
 
@@ -46,6 +48,7 @@ namespace Office.Controllers
     public ActionResult Edit(int id)
     {
       var thisDoctor = _db.Doctors.FirstOrDefault(doctor => doctor.DoctorId == id);
+      ViewBag.SpecialtyId = new SelectList(_db.Specialties, "SpecialtyId", "Name");
       return View(thisDoctor);
     }
 

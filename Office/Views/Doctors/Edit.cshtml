@@ -6,7 +6,7 @@
 
 <h2>Edit</h2>
 
-<h4>Edit this Doctor: @Html.DisplayFor(model => model.DoctorName)</h4>
+<h4>Edit Doctor: @Html.DisplayFor(model => model.DoctorName)</h4>
 
 @using (Html.BeginForm())
 {
@@ -14,6 +14,9 @@
 
   @Html.LabelFor(model => model.DoctorName)
   @Html.EditorFor(model => model.DoctorName)
+  <br>
+  @Html.LabelFor(model => model.Specialty.Name)
+  @Html.EditorFor(model => model.Specialty.Name)
 
   <input type="submit" value="Save" />
 }

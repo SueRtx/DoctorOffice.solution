@@ -24,6 +24,7 @@ namespace Office.Controllers
     public ActionResult Create()
     {
       ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "DoctorName");
+      ViewBag.SpecialtyId = new SelectList(_db.Specialties, "SpecialtyId", "Name");
       return View();
     }
 
@@ -53,6 +54,7 @@ namespace Office.Controllers
     {
       var thisPatient = _db.Patients.FirstOrDefault(patient => patient.PatientId == id);
       ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "DoctorName");
+      ViewBag.SpecialtyId = new SelectList(_db.Specialties, "SpecialtyId", "Name");
       return View(thisPatient);
     }
 
