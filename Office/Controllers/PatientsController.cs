@@ -43,9 +43,9 @@ namespace Office.Controllers
     public ActionResult Details(int id)
     {
       var thisPatient = _db.Patients
-          .Include(patient => patient.JoinEntities)
-          .ThenInclude(join => join.Doctor)
-          .FirstOrDefault(patient => patient.PatientId == id);
+        .Include(patient => patient.JoinEntities)
+        .ThenInclude(join => join.Doctor)
+        .FirstOrDefault(patient => patient.PatientId == id);
       return View(thisPatient);
     }
 
@@ -92,7 +92,7 @@ namespace Office.Controllers
       var thisPatient = _db.Patients.FirstOrDefault(patient => patient.PatientId == id);
       return View(thisPatient);
     }
-
+    
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {

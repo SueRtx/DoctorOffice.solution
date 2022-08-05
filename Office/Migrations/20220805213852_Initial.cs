@@ -27,18 +27,17 @@ namespace ToDoList.Migrations
                     DoctorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DoctorName = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    SpecialtyId = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    SpecialtyId1 = table.Column<int>(type: "int", nullable: true)
+                    SpecialtyId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Doctors", x => x.DoctorId);
                     table.ForeignKey(
-                        name: "FK_Doctors_Specialties_SpecialtyId1",
-                        column: x => x.SpecialtyId1,
+                        name: "FK_Doctors_Specialties_SpecialtyId",
+                        column: x => x.SpecialtyId,
                         principalTable: "Specialties",
                         principalColumn: "SpecialtyId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -99,9 +98,9 @@ namespace ToDoList.Migrations
                 column: "PatientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Doctors_SpecialtyId1",
+                name: "IX_Doctors_SpecialtyId",
                 table: "Doctors",
-                column: "SpecialtyId1");
+                column: "SpecialtyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Patients_SpecialtyId",
