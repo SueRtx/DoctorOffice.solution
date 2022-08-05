@@ -13,6 +13,7 @@ namespace Office.Models
         public string PatientName { get; set; }
         public string BirthDate { get; set; }
 
+        public virtual Specialty Specialty { get; set; }
         public virtual ICollection<DoctorPatient> JoinEntities { get;}
     }
 }

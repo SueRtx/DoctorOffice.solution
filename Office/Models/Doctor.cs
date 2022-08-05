@@ -13,6 +13,8 @@ namespace Office.Models
         public int DoctorId { get; set; }
         public string DoctorName { get; set; }
         public string Specialty { get; set; }
+
+        public virtual Specialty Specialty { get; set; }
         public virtual ICollection<DoctorPatient> JoinEntities { get; set; }
     }
 }
