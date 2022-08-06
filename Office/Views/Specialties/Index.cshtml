@@ -10,7 +10,6 @@
 {
   <h3>No Specialty have been added yet!</h3>
 }
-
 else
 {
 <ul>
@@ -20,9 +19,15 @@ else
     <li>@Html.ActionLink($"{specialty.Name}", "Details", new { id = specialty.SpecialtyId })</li>
   }
 </ul>
+<hr />
+<h5>@Html.ActionLink("Add Doctor", "Create", "Doctors")</h5>
+<h5>@Html.ActionLink("Add Patient", "Create", "Patients")</h5>
 }
+
 <h5>@Html.ActionLink("Add Specialty", "Create", new {@class = "indexLink"})</h5>
 
-@* <p>@Html.ActionLink("Add Doctors", "Create", "Doctors", new {@class = "indexLink"})</p> *@
-
 <h5>@Html.ActionLink("Home", "Index", "Home", new {@class = "indexLink"})</h5>
+
+
+
+@* <p>@Html.ActionLink("Add Doctors", "Create", "Doctors", new {@class = "indexLink"})</p> *@

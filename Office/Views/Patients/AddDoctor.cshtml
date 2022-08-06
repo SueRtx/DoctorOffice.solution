@@ -4,7 +4,7 @@
 
 @model Office.Models.Patient
 
-<h2>Add a Doctor</h2>
+@* <h2>Add a Doctor</h2> *@
 
 <h4>Add Doctor to Patient: @Html.DisplayFor(model => model.PatientName)</h4>
 
@@ -15,9 +15,9 @@
     @Html.Label("Select Doctor")
     @Html.DropDownList("DoctorId")
 
-    @Html.Label("Select Status")
+  
 
     <input type="submit" value="Save" />
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<h5>@Html.ActionLink("Patients List", "Index")</h5>
