@@ -5,7 +5,7 @@
 @model Office.Models.Patient
 
 <h2>Edit</h2>
-
+<hr />
 <h4>Edit Patient: @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
@@ -14,16 +14,16 @@
 
     @Html.LabelFor(model => model.Name)
     @Html.EditorFor(model => model.Name, new { required = "required" })
-
+<br />
     @Html.LabelFor(model => model.BirthDate)
-    @Html.EditorFor(model => model.BirthDate, new { required = "required", @type = "date" })
-
+    @Html.EditorFor(model => model.BirthDate, new { required = "required", @type = "date"})
+<br />
     
 
     @Html.Label("Select Specialty")
     @Html.DropDownList("SpecialtyId")
-
-    <input type="submit" value="Save" />
+<br />
+    <input type="submit" value="Save" class="pageLink"/>
 }
 
-<p>@Html.ActionLink("Patient list", "Index")</p>
+<h5 class="pageLink">@Html.ActionLink("Cancel", "Index")</h5>

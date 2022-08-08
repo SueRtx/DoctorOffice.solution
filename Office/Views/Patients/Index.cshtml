@@ -5,20 +5,26 @@
 @using Office.Models;
 @model List<Office.Models.Patient>;
 
-<h1>Patients</h1>
-<h4>Click on Patient name to see Details</h4>
+<h2>Patients List</h2>
+<hr />
+
 @if (@Model.Count == 0)
 {
-  <h4>No students have been added yet! Add Department & courses first</h4>
+  <h4>Add Specialty Before Adding Patient!</h4>
 } 
-
+else
+{
+  <h4>*Click on Patient Name to See Details*</h4>
+}
 @foreach (Patient patient in Model)
 {
   <li>@Html.ActionLink($"{patient.Name}", "Details", new { id = patient.PatientId })</li>
 }
 <hr />
-@* <h5>@Html.ActionLink("Add Patient", "Create")</h5> *@
-<h5>@Html.ActionLink("Home", "Index", "Home")</h5>
+@* <h5 class="pageLink">@Html.ActionLink("Add Patient", "Create")</h5> *@
+<h5 class="pageLink">@Html.ActionLink("Specialty List", "Index", "Specialties")</h5>
+<h5 class="pageLink">@Html.ActionLink("Home", "Index", "Home")</h5>
 
-@* <h5>@Html.ActionLink("Edit Patient", "Edit")</h5> *@
+@* <h5 class="pageLink">@Html.ActionLink("Specialty List", "Index")</h5>
+@Html.ActionLink("Edit Patient", "Edit")</h5> *@
 

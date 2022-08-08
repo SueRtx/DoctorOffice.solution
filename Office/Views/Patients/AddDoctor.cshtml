@@ -1,21 +1,21 @@
 @{
   Layout = "_Layout";
 }
+<h2>Add Doctor</h2>
+<hr />
 
 @model Office.Models.Patient
 
-@* <h2>Add a Doctor</h2> *@
-
-<h4>Add Doctor to Patient: @Html.DisplayFor(model => model.Name)</h4>
+<h4>Patient Name: @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.PatientId)
 
-    @Html.Label("Select Doctor")
-    @Html.DropDownList("DoctorId")
-
-    <input type="submit" value="Save" />
+    <h5>@Html.Label("Select Doctor")
+    @Html.DropDownList("DoctorId")</h5>
+  
+    <input type="submit" value="Save" class="pageLink" />
 }
 
-<h5>@Html.ActionLink("Patients List", "Index")</h5>
+<h5 class="pageLink">@Html.ActionLink("Cancel", "Index")</h5>

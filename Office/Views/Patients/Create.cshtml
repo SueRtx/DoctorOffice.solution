@@ -4,7 +4,8 @@
 
 @model Office.Models.Patient
 
-<h4>Add Patient</h4>
+<h2>Add Patient</h2>
+<hr />
 
 @using (Html.BeginForm())
 {
@@ -17,8 +18,8 @@
   @Html.Label("Select Specialty")
   @Html.DropDownList("SpecialtyId")
 <br />
-  <input type="submit" value="Add new Patient" id="btn" />
+  <input type="submit" value="Add new Patient" class="pageLink" />
 }
 <hr />
-<h5>@Html.ActionLink("Patient List", "Index")</h5>
-<h5>@Html.ActionLink("Home", "Index", "Home")</h5>
+<h5 class="pageLink">@Html.ActionLink("Patient List", "Index")</h5>
+<h5 class="pageLink">@Html.ActionLink("Home", "Index", "Home")</h5>

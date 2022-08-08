@@ -6,41 +6,40 @@
 
 <h2>Patient Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-<h3>@Html.DisplayNameFor(model => model.BirthDate): @Html.DisplayFor(model => model.BirthDate)</h3>
 
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.Label("Birth Date: ") @Html.DisplayFor(model => model.BirthDate)</h3>
+
+<h5 class="pageLink">@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId })</h5>
+<h5 class="pageLink">@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</h5>
+<hr />
 
 @if(@Model.JoinEntities.Count == 0)
 {
   <h4>This Patient does not have a Doctor!</h4>
-
- 
+  <h5 class="pageLink">@Html.ActionLink("Add a Doctor", "AddDoctor", new { id = Model.PatientId })</h5>
 }
 else
 {
-  <h4>Patient's Doctor</h4>
+  <h4>Patient's Doctor List</h4>
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Doctor.Name</li>
+    <li>@join.Doctor.Name </li>
 
     @using (Html.BeginForm("DeleteDoctor", "Patients"))
     {
       @Html.Hidden("joinId", @join.PatientDoctorId)
 
-      <input type="submit" value="Delete"/>
-
-      
+      <input type="submit" value="Delete" id="btn"/>
     }
+    
   }
   </ul>
+<h5 class="pageLink">@Html.ActionLink("Add more Doctor", "AddDoctor", new { id = Model.PatientId })</h5>
+
+<h5 class="pageLink">@Html.ActionLink("Patient list", "Index")</h5>
+
+<h5 class="pageLink">@Html.ActionLink("Specialty List", "Index", "Specialties")</h5>
 }
-
-<h5>@Html.ActionLink("Add a Doctor", "AddDoctor", new { id = Model.PatientId })</h5>
-<p>@Html.ActionLink("Patient list", "Index")</p>
-
-<p>@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId })</p>
-<h5>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</h5>
-
-<h5>@Html.ActionLink("Specialty List", "Index", "Specialties")</h5>
-<h5>@Html.ActionLink("Home", "Index", "Home")</h5>
+<h5 class="pageLink">@Html.ActionLink("Home", "Index", "Home")</h5>
