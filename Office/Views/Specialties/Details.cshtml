@@ -6,36 +6,36 @@
 
 <h2>Specialty Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+<h3>@Html.Label("Specialty: ") @Html.DisplayFor(model => model.Name)</h3>
+
+<h5 class="pageLink">@Html.ActionLink("Edit Specialty", "Edit", new { id = Model.SpecialtyId })</h5>
+<h5 class="pageLink">@Html.ActionLink("Delete Specialty", "Delete", new { id = Model.SpecialtyId })</h5>
+<h5 class="pageLink">@Html.ActionLink("Specialties List", "Index")</h5>
+<hr />
 
 @if(@Model.Doctors.Count == 0)
 {
-  <h4>This Specialty does not contain any doctor</h4>
-  
+  <h4>This Specialty does not contain any doctor</h4> 
 }
 else
 {
   <h4>Doctors in this Specialty</h4>
   <ul>
-  @foreach(var doctor in Model.Doctors)
-  {
-    <li>@Html.ActionLink($"{doctor.Name}", "Details", "Doctors", new { id = doctor.DoctorId })</li>
-  }
+    @foreach(var doctor in Model.Doctors)
+    {
+      <li>@Html.ActionLink($"{doctor.Name}", "Details", "Doctors", new { id = doctor.DoctorId })</li>
+    }
   </ul>
 }
+
+<h5 class="pageLink">@Html.ActionLink("Add Doctor", "Create", "Doctors")</h5>
 <hr />
 @if (@Model.Patients.Count == 0)
   {
     <h4>This Specialty does not contain any Patient yet!</h4>
   }
   
-<h5>@Html.ActionLink("Edit Specialty", "Edit", new { id = Model.SpecialtyId })</h5>
-<h5>@Html.ActionLink("Delete Specialty", "Delete", new { id = Model.SpecialtyId })</h5>
+<h5 class="pageLink">@Html.ActionLink("Add Patient", "Create", "Patients")</h5>
 
-<h5>@Html.ActionLink("Add Doctor", "Create", "Doctors")</h5>
-<h5>@Html.ActionLink("Add Patient", "Create", "Patients")</h5>
-
-<h5>@Html.ActionLink("Specialties List", "Index")</h5>
-
-
-<h5>@Html.ActionLink("Home", "Index", "Home")</h5>
+<h5 class="pageLink">@Html.ActionLink("Home", "Index", "Home")</h5>

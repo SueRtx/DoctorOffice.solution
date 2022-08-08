@@ -1,16 +1,18 @@
 @{
   Layout = "_Layout";
 }
-
+<h2>Specialty</h2>
+<hr/>
 @model Office.Models.Specialty
 
-<h2>Are you sure you want to delete this?</h2>
+<h4>Are you sure you want to delete this?</h4>
 
 @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
 
 @using (Html.BeginForm())
 {
-  <input type="submit" value="Delete" />
+  <input type="submit" value="Delete" class="pageLink" />
 }
-@Html.ActionLink("Specialty List", "Index")
+<hr />
+<h5 class="pageLink">@Html.ActionLink("Cancel", "Index")</h5>
 

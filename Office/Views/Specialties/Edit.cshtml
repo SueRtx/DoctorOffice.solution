@@ -5,20 +5,20 @@
 @model Office.Models.Specialty
 
 <h2>Edit Specialty</h2>
-
-<h4>Edit this Specialty: @Html.DisplayFor(model => model.Name)</h4>
+<hr />
+<h4>Editing Specialty: @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.SpecialtyId)
 
-  @Html.LabelFor(model => model.Name)
+  @Html.Label("Specialty Name")
   @Html.EditorFor(model => model.Name, new { required = "required" })
 
   <input type="submit" value="Save" />
 }
-
-<h5>@Html.ActionLink("Specialty List", "Index")</h5>
+<hr />
+<h5 class="pageLink">@Html.ActionLink("Specialty List", "Index")</h5>
 
 @* <p>@Html.ActionLink("Back to Specialtys", "Index", null, null,  new {@class = "spDLink"})</p> *@
 

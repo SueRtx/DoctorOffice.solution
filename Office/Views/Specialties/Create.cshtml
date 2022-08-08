@@ -4,7 +4,8 @@
 
 @model Office.Models.Specialty
 
-<h4>Add Specialty</h4>
+<h2>Add Specialty</h2>
+<hr />
 
 @using (@Html.BeginForm())
 {
@@ -14,5 +15,5 @@
   <input type="submit" value="Submit"/>
 }
 
-<p>@Html.ActionLink("Specialty List", "Index")</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<h5 class="pageLink">@Html.ActionLink("Specialty List", "Index")</h5>
+<h5 class="pageLink">@Html.ActionLink("Home", "Index", "Home")</h5>

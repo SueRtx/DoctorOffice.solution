@@ -8,11 +8,11 @@
 
 @if (@Model.Count == 0)
 {
-  <h3>No courses on list yet. Add Department first</h3>
+  <h3>No Doctor on List Yet!</h3>
   @* <h5>@Html.ActionLink("Add Doctor ", "Create", "Doctors")</h5>  *@
 } 
-
-
+else
+{
   <h3>Click on Doctor to this Details</h3> 
   <ul>
     @foreach(Doctor doctor in Model)
@@ -20,13 +20,18 @@
       <li>@Html.ActionLink($"{doctor.Name}", "Details", new { id = doctor.DoctorId })</li>
     }
   </ul>
+  <h5>@Html.ActionLink("Add Patient", "Create", "Patients")</h5>
 
-@* @if (@ViewBag.DepartmentNum > 0)
+}
+@if (@ViewBag.SpecialtyNum > 0)
 {
 <h5>@Html.ActionLink("Add Doctor ", "Create", "Doctors")</h5> 
-} *@
-
-<h5>@Html.ActionLink("Add Doctor ", "Create", "Doctors")</h5>  
+}
+else
+{
+  <h3>Add Specialty before adding Doctor!</h3>
+}
+@* <h5>@Html.ActionLink("Add Doctor ", "Create", "Doctors")</h5>   *@
 
 <h5>@Html.ActionLink("Specialty List", "Index", "Specialties")</h5>
 
