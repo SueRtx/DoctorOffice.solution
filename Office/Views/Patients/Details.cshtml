@@ -6,15 +6,15 @@
 
 <h2>Patient Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.PatientName): @Html.DisplayFor(model => model.PatientName)</h3>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h3>@Html.DisplayNameFor(model => model.BirthDate): @Html.DisplayFor(model => model.BirthDate)</h3>
 
 
 @if(@Model.JoinEntities.Count == 0)
 {
   <h4>This Patient does not have a Doctor!</h4>
-  @* <p>@Html.ActionLink("Add a Doctor", "AddDoctor", new { id = Model.PatientId })</p> *@
-  <h5>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</h5>
+
+ 
 }
 else
 {
@@ -22,25 +22,25 @@ else
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Doctor.DoctorName</li>
+    <li>@join.Doctor.Name</li>
 
     @using (Html.BeginForm("DeleteDoctor", "Patients"))
     {
-      @Html.Hidden("joinId", @join.DoctorPatientId)
+      @Html.Hidden("joinId", @join.PatientDoctorId)
 
       <input type="submit" value="Delete"/>
 
-      <h5>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</h5>
+      
     }
   }
   </ul>
 }
 
 <h5>@Html.ActionLink("Add a Doctor", "AddDoctor", new { id = Model.PatientId })</h5>
-@* <p>@Html.ActionLink("Patient list", "Index")</p> *@
+<p>@Html.ActionLink("Patient list", "Index")</p>
 
-@* <p>@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId })</p> *@
-@* <h5>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</h5> *@
+<p>@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId })</p>
+<h5>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</h5>
 
 <h5>@Html.ActionLink("Specialty List", "Index", "Specialties")</h5>
 <h5>@Html.ActionLink("Home", "Index", "Home")</h5>

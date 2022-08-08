@@ -26,7 +26,7 @@ namespace ToDoList.Migrations
                 {
                     DoctorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    DoctorName = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     SpecialtyId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -46,7 +46,7 @@ namespace ToDoList.Migrations
                 {
                     PatientId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PatientName = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     BirthDate = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     SpecialtyId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -62,25 +62,25 @@ namespace ToDoList.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DoctorPatient",
+                name: "PatientDoctor",
                 columns: table => new
                 {
-                    DoctorPatientId = table.Column<int>(type: "int", nullable: false)
+                    PatientDoctorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     PatientId = table.Column<int>(type: "int", nullable: false),
                     DoctorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DoctorPatient", x => x.DoctorPatientId);
+                    table.PrimaryKey("PK_PatientDoctor", x => x.PatientDoctorId);
                     table.ForeignKey(
-                        name: "FK_DoctorPatient_Doctors_DoctorId",
+                        name: "FK_PatientDoctor_Doctors_DoctorId",
                         column: x => x.DoctorId,
                         principalTable: "Doctors",
                         principalColumn: "DoctorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DoctorPatient_Patients_PatientId",
+                        name: "FK_PatientDoctor_Patients_PatientId",
                         column: x => x.PatientId,
                         principalTable: "Patients",
                         principalColumn: "PatientId",
@@ -88,19 +88,19 @@ namespace ToDoList.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_DoctorPatient_DoctorId",
-                table: "DoctorPatient",
-                column: "DoctorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DoctorPatient_PatientId",
-                table: "DoctorPatient",
-                column: "PatientId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Doctors_SpecialtyId",
                 table: "Doctors",
                 column: "SpecialtyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PatientDoctor_DoctorId",
+                table: "PatientDoctor",
+                column: "DoctorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PatientDoctor_PatientId",
+                table: "PatientDoctor",
+                column: "PatientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Patients_SpecialtyId",
@@ -111,7 +111,7 @@ namespace ToDoList.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "DoctorPatient");
+                name: "PatientDoctor");
 
             migrationBuilder.DropTable(
                 name: "Doctors");

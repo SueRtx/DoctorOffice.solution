@@ -6,7 +6,7 @@
 
 <h2>Doctor Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.DoctorName): @Html.DisplayFor(model => model.DoctorName)</h3>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 
 @* @Html.HiddenFor(model => model.SpecialtyId)
 <h3>@Html.DisplayNameFor(model => model.Specialty): @Html.DisplayFor(model => model.Specialty)</h3> *@
@@ -17,12 +17,11 @@
 }
 else
 {
-  <h4>Doctor"s Patients:</h4>
+  <h4>Patient Doctors</h4>
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    @* <li>@join.Patient.PatientName</li> *@
-    <li>@join.Patient.PatientName</li>
+    <li>@join.Patient.Name</li>
   }
   </ul>
 }
@@ -31,7 +30,8 @@ else
 
 <p>@Html.ActionLink("Doctor List", "Index")</p>
 
+
 <p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId })</p>
 
-@* <p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</p> *@
+<p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</p>
  

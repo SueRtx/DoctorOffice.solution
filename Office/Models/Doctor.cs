@@ -6,14 +6,14 @@ namespace Office.Models
     {
         public Doctor()
         {
-            this.JoinEntities = new HashSet<DoctorPatient>();
+            this.JoinEntities = new HashSet<PatientDoctor>();
         }
 
         public int DoctorId { get; set; }
-        public string DoctorName { get; set; }
+        public string Name { get; set; }
         public int SpecialtyId { get; set; }
 
         public virtual Specialty Specialty { get; set; }
-        public virtual ICollection<DoctorPatient> JoinEntities { get; set; }
+        public virtual ICollection<PatientDoctor> JoinEntities { get; set; }
     }
 }

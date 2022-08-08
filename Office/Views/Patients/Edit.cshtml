@@ -6,23 +6,22 @@
 
 <h2>Edit</h2>
 
-<h4>Edit this task: @Html.DisplayFor(model => model.PatientName)</h4>
+<h4>Edit Patient: @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.PatientId)
 
-    @Html.LabelFor(model => model.PatientName)
-    @Html.EditorFor(model => model.PatientName, new { required = "required" })
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name, new { required = "required" })
 
     @Html.LabelFor(model => model.BirthDate)
     @Html.EditorFor(model => model.BirthDate, new { required = "required", @type = "date" })
 
-    @* @Html.Label("Select Doctor")
-    @Html.DropDownList("DoctorId") *@
+    
 
-    @Html.Label("Select Doctor")
-    @Html.DropDownList("SpecialityId")
+    @Html.Label("Select Specialty")
+    @Html.DropDownList("SpecialtyId")
 
     <input type="submit" value="Save" />
 }

@@ -22,7 +22,7 @@ namespace ToDoList.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("DoctorName")
+                    b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("SpecialtyId")
@@ -35,27 +35,6 @@ namespace ToDoList.Migrations
                     b.ToTable("Doctors");
                 });
 
-            modelBuilder.Entity("Office.Models.DoctorPatient", b =>
-                {
-                    b.Property<int>("DoctorPatientId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
-                    b.HasKey("DoctorPatientId");
-
-                    b.HasIndex("DoctorId");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("DoctorPatient");
-                });
-
             modelBuilder.Entity("Office.Models.Patient", b =>
                 {
                     b.Property<int>("PatientId")
@@ -65,7 +44,7 @@ namespace ToDoList.Migrations
                     b.Property<string>("BirthDate")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("PatientName")
+                    b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("SpecialtyId")
@@ -76,6 +55,27 @@ namespace ToDoList.Migrations
                     b.HasIndex("SpecialtyId");
 
                     b.ToTable("Patients");
+                });
+
+            modelBuilder.Entity("Office.Models.PatientDoctor", b =>
+                {
+                    b.Property<int>("PatientDoctorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PatientDoctorId");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("PatientDoctor");
                 });
 
             modelBuilder.Entity("Office.Models.Specialty", b =>
@@ -103,7 +103,18 @@ namespace ToDoList.Migrations
                     b.Navigation("Specialty");
                 });
 
-            modelBuilder.Entity("Office.Models.DoctorPatient", b =>
+            modelBuilder.Entity("Office.Models.Patient", b =>
+                {
+                    b.HasOne("Office.Models.Specialty", "Specialty")
+                        .WithMany("Patients")
+                        .HasForeignKey("SpecialtyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Specialty");
+                });
+
+            modelBuilder.Entity("Office.Models.PatientDoctor", b =>
                 {
                     b.HasOne("Office.Models.Doctor", "Doctor")
                         .WithMany("JoinEntities")
@@ -120,17 +131,6 @@ namespace ToDoList.Migrations
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
-                });
-
-            modelBuilder.Entity("Office.Models.Patient", b =>
-                {
-                    b.HasOne("Office.Models.Specialty", "Specialty")
-                        .WithMany("Patients")
-                        .HasForeignKey("SpecialtyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Specialty");
                 });
 
             modelBuilder.Entity("Office.Models.Doctor", b =>

@@ -1,8 +1,8 @@
 namespace Office.Models
 {
-  public class DoctorPatient
+  public class PatientDoctor
     {       
-      public int DoctorPatientId { get; set; }
+      public int PatientDoctorId { get; set; }
       public int PatientId { get; set; }
       public int DoctorId { get; set; }
       public virtual Patient Patient { get; set; }

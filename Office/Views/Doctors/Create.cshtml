@@ -2,14 +2,15 @@
   Layout = "_Layout";
 }
 
+<div class="container">
 @model Office.Models.Doctor
 
 <h2>Add Doctor</h2>
 <hr/>
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.DoctorName) 
-  @Html.TextBoxFor(model => model.DoctorName, new { required = "required"})
+  @Html.LabelFor(model => model.Name) 
+  @Html.TextBoxFor(model => model.Name, new { required = "required"})
 <br>
   @Html.LabelFor(model => model.Specialty)
   @Html.DropDownList("SpecialtyId")
@@ -18,3 +19,5 @@
 }
 <h5>@Html.ActionLink("Doctors List", "Index")</h5>
 <h5>@Html.ActionLink("Home", "Index", "Home")</h5>
+
+</div>

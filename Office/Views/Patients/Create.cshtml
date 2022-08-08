@@ -8,8 +8,8 @@
 
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.PatientName)
-  @Html.TextBoxFor(model => model.PatientName, new { required = "required" })
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name, new { required = "required" })
 <br />
   @Html.LabelFor(model => model.BirthDate)
   @Html.TextBoxFor(model => model.BirthDate, new { required = "required", @type = "date" })

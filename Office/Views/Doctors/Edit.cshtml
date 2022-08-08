@@ -6,18 +6,19 @@
 
 <h2>Edit</h2>
 
-<h4>Edit Doctor: @Html.DisplayFor(model => model.DoctorName)</h4>
+<h4>Edit Doctor: @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.DoctorId)
 
-  @Html.LabelFor(model => model.DoctorName)
-  @Html.EditorFor(model => model.DoctorName, new { required = "required" })
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name, new { required = "required" })
   <br>
   @Html.LabelFor(model => model.Specialty.Name)
   @Html.EditorFor(model => model.Specialty.Name, new { required = "required" })
 
   <input type="submit" value="Save" />
 }
+
 <h5>@Html.ActionLink("Back to list", "Index")</h5>

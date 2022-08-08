@@ -9,13 +9,16 @@
 <h4>Click on Patient name to see Details</h4>
 @if (@Model.Count == 0)
 {
-  <h4>No Patient have been added yet!</h4>
+  <h4>No students have been added yet! Add Department & courses first</h4>
 } 
 
 @foreach (Patient patient in Model)
 {
-  <li>@Html.ActionLink($"{patient.PatientName}", "Details", new { id = patient.PatientId })</li>
+  <li>@Html.ActionLink($"{patient.Name}", "Details", new { id = patient.PatientId })</li>
 }
 <hr />
-<h5>@Html.ActionLink("Add Patient", "Create")</h5>
+@* <h5>@Html.ActionLink("Add Patient", "Create")</h5> *@
 <h5>@Html.ActionLink("Home", "Index", "Home")</h5>
+
+@* <h5>@Html.ActionLink("Edit Patient", "Edit")</h5> *@
+
