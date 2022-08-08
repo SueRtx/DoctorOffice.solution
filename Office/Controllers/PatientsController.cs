@@ -10,6 +10,7 @@ namespace Office.Controllers
   public class PatientsController : Controller
   {
     private readonly OfficeContext _db;
+    
     public PatientsController(OfficeContext db)
     {
       _db = db;

@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.DoctorName) 
-  @Html.TextBoxFor(model => model.DoctorName, new { required = "required" })
+  @Html.TextBoxFor(model => model.DoctorName, new { required = "required"})
 <br>
   @Html.LabelFor(model => model.Specialty)
   @Html.DropDownList("SpecialtyId")
