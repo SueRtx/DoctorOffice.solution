@@ -14,10 +14,11 @@
 <br>
   @Html.LabelFor(model => model.Specialty)
   @Html.DropDownList("SpecialtyId")
-<br>
+
   <input type="submit" value="Add" />
 }
-<h5>@Html.ActionLink("Doctors List", "Index")</h5>
-<h5>@Html.ActionLink("Home", "Index", "Home")</h5>
+<hr/>
+<h5 class="pageLink">@Html.ActionLink("Doctors List", "Index")</h5>
+<h5 class="pageLink">@Html.ActionLink("Home", "Index", "Home")</h5>
 
 </div>

@@ -3,12 +3,14 @@
 }
 
 @model Office.Models.Doctor
-
-<h2>Are you sure you want to <strong>DELETE</strong> this?</h2>
+<h2>Delete Doctor</h2>
+<hr />
+<h4>Are you sure you want to <strong>DELETE</strong> this Doctor?</h4>
 
 @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
 @using (Html.BeginForm())
 {
-  <input type="submit" value="Delete" />
+  <input type="submit" value="Delete" class="pageLink" />
 }
-@Html.ActionLink("Doctor List", "Index")
+
+<h5 class="pageLink">@Html.ActionLink("Cancel", "Index")</h5>

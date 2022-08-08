@@ -4,9 +4,9 @@
 
 @model Office.Models.Doctor
 
-<h2>Edit</h2>
-
-<h4>Edit Doctor: @Html.DisplayFor(model => model.Name)</h4>
+<h2>Edit Doctor</h2>
+<hr />
+<h4>Edit: Dr. @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
 {
@@ -14,11 +14,11 @@
 
   @Html.LabelFor(model => model.Name)
   @Html.EditorFor(model => model.Name, new { required = "required" })
-  <br>
-  @Html.LabelFor(model => model.Specialty.Name)
+  <br />
+  @Html.Label("Specialty")
   @Html.DropDownList("SpecialtyId")
-
-  <input type="submit" value="Save" />
+  <br />
+  <input type="submit" value="Save" class="pageLink" />
 }
 
-<h5>@Html.ActionLink("Back to list", "Index")</h5>
+<h5 class="pageLink">@Html.ActionLink("Cancel", "Index")</h5>

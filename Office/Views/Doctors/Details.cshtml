@@ -13,7 +13,7 @@
 
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This Doctor Does Not Contain Any Patient</p>
+  <h4>*This Doctor Does Not Contain Any Patient*</h4>
 }
 else
 {
@@ -26,12 +26,12 @@ else
   </ul>
 }
 
-<p>@Html.ActionLink("Add Patient", "Create", "Patients")</p>
+<h5 class="pageLink">@Html.ActionLink("Add Patient", "Create", "Patients")</h5>
 
-<p>@Html.ActionLink("Doctor List", "Index")</p>
+<h5 class="pageLink">@Html.ActionLink("Doctor List", "Index")</h5>
 
 
-<p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId })</p>
+<h5 class="pageLink">@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId })</h5>
 
-<p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</p>
+<h5 class="pageLink">@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</h5>
  
